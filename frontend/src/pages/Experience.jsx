@@ -20,7 +20,6 @@ function Experience() {
     <>
       <NavBar />
 
-      {/* Education & Experience */}
       <div className="md:px-[6%] flex flex-col gap-10 mt-10 mb-15">
         {/* Education */}
         <h1 className="text-3xl font-bold md:text-4xl lg:text-6xl leading-tight hover:text-gray-700">
@@ -28,15 +27,14 @@ function Experience() {
         </h1>
 
         <h2 className="text-xl md:text-2xl font-semibold">
-          <strong>Bachelor of Science in Information Systems</strong> - 4th Year{" "}
+          <strong>Bachelor of Science in Information Systems</strong> - 4th Year
           <br />
           <strong>Technological University of the Philippines–Manila</strong>
         </h2>
 
-        <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-          A <strong>passionate</strong> and <strong>curious learner</strong>,
-          driven not only by my studies in <strong>Information Systems</strong>{" "}
-          but also by exploring{" "}
+        <p className="text-base md:text-lg text-gray-700 leading-relaxed md:w-1/2">
+          A <strong>curious learner</strong>, driven not only by my studies in{" "}
+          <strong>Information Systems</strong> but also by exploring{" "}
           <strong>opportunities beyond the classroom</strong>. I enjoy expanding
           my skills across <strong>development</strong>, <strong>design</strong>
           , and other <strong>creative pursuits</strong>, bringing{" "}
@@ -47,13 +45,14 @@ function Experience() {
         {/* Highlights */}
         <ul className="list-none pl-0 space-y-3 text-gray-700">
           <li>
-            Awarded the{" "}
+            Awarded by the{" "}
             <strong>
               Department of Science and Technology (DOST) JLSS RA 7687
               Scholarship
             </strong>{" "}
-            (2024 – Present) for <strong>outstanding academic potential</strong>{" "}
-            and commitment to <strong>science and technology</strong>.
+            (2024 – Present) <br />
+            for <strong>outstanding academic potential</strong> and commitment
+            to <strong>science and technology</strong>.
           </li>
           <li>
             <strong>Consistent Dean’s Lister</strong> from First Year, First
@@ -78,7 +77,12 @@ function Experience() {
               <img
                 src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768592576/viber_image_2023-08-29_11-52-59-729_yvk2sc.png"
                 alt="CJ Foods"
-                className="w-full h-full object-cover rounded-lg shadow-md"
+                className="w-full h-full object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-200"
+                onClick={() =>
+                  openModal(
+                    "https://res.cloudinary.com/dezl3r1u5/image/upload/v1768592576/viber_image_2023-08-29_11-52-59-729_yvk2sc.png"
+                  )
+                }
               />
             </div>
             <div className="md:w-3/4">
@@ -103,7 +107,12 @@ function Experience() {
               <img
                 src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768592566/Logo_Landscape_jh8hry.png"
                 alt="Becarman"
-                className="w-full h-full object-cover rounded-lg shadow-md"
+                className="w-full h-full object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-200"
+                onClick={() =>
+                  openModal(
+                    "https://res.cloudinary.com/dezl3r1u5/image/upload/v1768592566/Logo_Landscape_jh8hry.png"
+                  )
+                }
               />
             </div>
             <div className="md:w-3/4">
@@ -116,7 +125,7 @@ function Experience() {
               <p className="text-gray-700 leading-relaxed">
                 I also have experience managing{" "}
                 <strong>social media accounts</strong>, creating content
-                including <strong>content conceptualization</strong>,{" "}
+                including <strong>content conceptualization</strong>,
                 <strong>video editing</strong>, and{" "}
                 <strong>social media marketing</strong>.
               </p>
@@ -129,7 +138,12 @@ function Experience() {
               <img
                 src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768592545/outside_aopsqs.png"
                 alt="Sunbee Co"
-                className="w-full h-full object-cover rounded-lg shadow-md"
+                className="w-full h-full object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-200"
+                onClick={() =>
+                  openModal(
+                    "https://res.cloudinary.com/dezl3r1u5/image/upload/v1768592545/outside_aopsqs.png"
+                  )
+                }
               />
             </div>
             <div className="md:w-3/4">
@@ -198,13 +212,13 @@ function Experience() {
         {/* Modal */}
         {modalImage && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+            className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm bg-black/20 p-4"
             onClick={closeModal}
           >
             <img
               src={modalImage}
-              alt="Certificate"
-              className="max-w-full max-h-full rounded-lg shadow-xl"
+              alt="Zoomed"
+              className="max-w-full max-h-full rounded-lg shadow-xl cursor-pointer"
             />
           </div>
         )}
