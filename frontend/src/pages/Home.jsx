@@ -71,29 +71,65 @@ function Home() {
           {/* Skills */}
           <div className="mt-10 mb-[50vh] md:mb-0">
             <h1 className="font-bold text-3xl md:hidden">Technical Skills</h1>
-            <p className="mt-4">Programming Language</p>
+            <p className="mt-4">
+              <strong>Programming Languages</strong>
+            </p>
             <div className="flex gap-2 flex-wrap mt-2">
-              <p className="Technology">C</p>
-              <p className="Technology">TypeScript</p>
-              <p className="Technology">JavaScript</p>
-              <p className="Technology">Java</p>
-              <p className="Technology">C++</p>
+              <p className="Technology">
+                <strong>C</strong>
+              </p>
+              <p className="Technology">
+                <strong>TypeScript</strong>
+              </p>
+              <p className="Technology">
+                <strong>JavaScript</strong>
+              </p>
+              <p className="Technology">
+                <strong>Java</strong>
+              </p>
+              <p className="Technology">
+                <strong>C++</strong>
+              </p>
             </div>
-            <p className="mt-4">Frameworks & Tools</p>
+            <p className="mt-4">
+              <strong>Frameworks & Tools</strong>
+            </p>
             <div className="flex gap-2 flex-wrap mt-2">
-              <p className="Technology">React</p>
-              <p className="Technology">Express.js</p>
-              <p className="Technology">Google Cloud Platform</p>
-              <p className="Technology">Bootstrap</p>
-              <p className="Technology">Git</p>
-              <p className="Technology">PostgreSQL</p>
-              <p className="Technology">HTML</p>
-              <p className="Technology">CSS</p>
-              <p className="Technology">Figma</p>
+              <p className="Technology">
+                <strong>React</strong>
+              </p>
+              <p className="Technology">
+                <strong>Express.js</strong>
+              </p>
+              <p className="Technology">
+                <strong>Google Cloud Platform</strong>
+              </p>
+              <p className="Technology">
+                <strong>Bootstrap</strong>
+              </p>
+              <p className="Technology">
+                <strong>Git</strong>
+              </p>
+              <p className="Technology">
+                <strong>PostgreSQL</strong>
+              </p>
+              <p className="Technology">
+                <strong>HTML</strong>
+              </p>
+              <p className="Technology">
+                <strong>CSS</strong>
+              </p>
+              <p className="Technology">
+                <strong>Figma</strong>
+              </p>
             </div>
-            <p className="mt-4">Information System Skills</p>
+            <p className="mt-4">
+              <strong>Information System Skills</strong>
+            </p>
             <div className="flex gap-2 flex-wrap mt-2">
-              <p className="Technology">Basic System Analysis & Design</p>
+              <p className="Technology">
+                <strong>Basic System Analysis & Design</strong>
+              </p>
             </div>
           </div>
         </div>
@@ -105,49 +141,71 @@ function Home() {
             {/* First Spark */}
             <li className="my-grid">
               <h2 className="text-xl font-bold">
-                First Spark — CS50 by Harvard (June 2022) ✨
+                <strong>First Spark — CS50 by Harvard</strong> (June 2022) ✨
               </h2>
               <p className="font-semibold">
-                CS50: Introduction to Computer Science (edX / Harvard
-                University)
+                <strong>CS50: Introduction to Computer Science</strong> (edX /
+                Harvard University)
               </p>
-              <p className="Technology max-w-27 mb-4 mt-2">C LANGUAGE</p>
+              <p className="Technology max-w-27 mb-4 mt-2">
+                <strong>C LANGUAGE</strong>
+              </p>
               <p className="pl-4">
                 My introduction to programming before entering college. Although
-                I was’t able to complete the full course due to financial
-                constraints, CS50 ignited my passion for problem-solving and
+                I wasn't able to complete the full course due to{" "}
+                <strong>financial constraints</strong>, CS50{" "}
+                <strong>ignited my passion for problem-solving</strong> and
                 software development. This experience opened a new path for me
-                and helped me build a strong foundation in C programming,
-                computational thinking, and logical problem solving.
+                and helped me build a strong foundation in{" "}
+                <strong>
+                  C programming, computational thinking, and logical problem
+                  solving
+                </strong>
+                .
               </p>
             </li>
 
             {/* Academic Foundation */}
             <li className="my-grid">
               <h2 className="text-xl font-bold">
-                Academic Foundation — BS Information Systems (TUP–Manila)
+                <strong>
+                  Academic Foundation — BS Information Systems (TUP–Manila)
+                </strong>
               </h2>
 
               <ul className="list-none pl-6 space-y-3 mt-5">
                 {/* 1st Year */}
                 <li>
                   <span className="font-bold">
-                    📘 1st Year (AY 2022–2023) — Fundamentals
+                    📘 1st Year (AY 2022–2023) — <strong>Fundamentals</strong>
                   </span>
                   <div className="flex gap-2 flex-wrap mt-2">
-                    <p className="Technology">C</p>
-                    <p className="Technology">HTML</p>
-                    <p className="Technology">CSS</p>
+                    <p className="Technology">
+                      <strong>C</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>HTML</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>CSS</strong>
+                    </p>
                   </div>
-
                   <ul className="list-none pl-4 space-y-1 mb-4 mt-2 font-semibold">
-                    <li>CC113 – Introduction to Computing</li>
-                    <li>CC131L / CC141L – Computer Programming 1 & 2 </li>
+                    <li>
+                      <strong>CC113 – Introduction to Computing</strong>
+                    </li>
+                    <li>
+                      <strong>
+                        CC131L / CC141L – Computer Programming 1 & 2
+                      </strong>
+                    </li>
                   </ul>
                   <p className="pl-4">
-                    Learned basic computing concepts, algorithms, and
-                    problem-solving fundamentals. Built my programming
-                    foundation using C, alongside basic HTML and CSS for web
+                    Learned{" "}
+                    <strong>basic computing concepts, algorithms</strong>, and{" "}
+                    <strong>problem-solving fundamentals</strong>. Built my
+                    programming foundation using <strong>C</strong>, alongside
+                    basic <strong>HTML</strong> and <strong>CSS</strong> for web
                     structure and styling.
                   </p>
                 </li>
@@ -155,81 +213,126 @@ function Home() {
                 {/* 2nd Year */}
                 <li>
                   <span className="font-bold">
-                    📗 2nd Year (AY 2023–2024) — Core Programming Skills
+                    📗 2nd Year (AY 2023–2024) —{" "}
+                    <strong>Core Programming Skills</strong>
                   </span>
                   <div className="flex gap-2 flex-wrap mt-2">
-                    <p className="Technology">C++</p>
-                    <p className="Technology">MySQL</p>
+                    <p className="Technology">
+                      <strong>C++</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>MySQL</strong>
+                    </p>
                   </div>
                   <ul className="list-none pl-4 space-y-1 mb-4 mt-2 font-semibold">
-                    <li>CC211L – Data Structures and Algorithms</li>
-                    <li>IS251L – Object-Oriented Programming</li>
-                    <li>CC201L – Information Management</li>
+                    <li>
+                      <strong>CC211L – Data Structures and Algorithms</strong>
+                    </li>
+                    <li>
+                      <strong>IS251L – Object-Oriented Programming</strong>
+                    </li>
+                    <li>
+                      <strong>CC201L – Information Management</strong>
+                    </li>
                   </ul>
                   <p className="pl-4">
-                    Studied arrays, stacks, queues, linked lists, and algorithm
-                    efficiency. Applied OOP concepts such as encapsulation,
-                    inheritance, and polymorphism. Learned MySQL, database
-                    design, normalization, and basic SQL queries.
+                    Studied{" "}
+                    <strong>arrays, stacks, queues, linked lists</strong>, and{" "}
+                    <strong>algorithm efficiency</strong>. Applied{" "}
+                    <strong>OOP concepts</strong> such as encapsulation,
+                    inheritance, and polymorphism. Learned{" "}
+                    <strong>MySQL, database design, normalization</strong>, and
+                    basic SQL queries.
                   </p>
                 </li>
 
                 {/* 3rd Year */}
                 <li>
                   <span className="font-bold">
-                    📙 3rd Year (AY 2024–2025) — Application Development
+                    📙 3rd Year (AY 2024–2025) —{" "}
+                    <strong>Application Development</strong>
                   </span>
                   <div className="flex gap-2 flex-wrap mt-2">
-                    <p className="Technology">Java</p>
-                    <p className="Technology">JavaScript</p>
+                    <p className="Technology">
+                      <strong>Java</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>JavaScript</strong>
+                    </p>
                   </div>
                   <ul className="list-none pl-4 space-y-1 mb-4 mt-2 font-semibold">
-                    <li>CC311L – Web Development</li>
+                    <li>
+                      <strong>CC311L – Web Development</strong>
+                    </li>
                   </ul>
                   <p className="pl-4">
-                    Developed web applications using Java, JavaScript, and
-                    modern web concepts. Focus: Turning logic into real-world
-                    applications and understanding full web workflows.
+                    Developed <strong>web applications</strong> using{" "}
+                    <strong>Java, JavaScript</strong>, and modern web concepts.
+                    Focus: Turning logic into real-world applications and
+                    understanding full web workflows.
                   </p>
                 </li>
 
                 {/* 4th Year */}
                 <li>
                   <span className="font-bold">
-                    📕 4th Year (AY 2025–2026) — Capstone Project
+                    📕 4th Year (AY 2025–2026) —{" "}
+                    <strong>Capstone Project</strong>
                   </span>
                   <div className="flex gap-2 flex-wrap mt-2">
-                    <p className="Technology">PostgreSQL</p>
-                    <p className="Technology">Supabase</p>
-                    <p className="Technology">React</p>
-                    <p className="Technology">Tailwind</p>
-                    <p className="Technology">Node.js</p>
-                    <p className="Technology">Express.js</p>
-                    <p className="Technology">Google Cloud Platform</p>
+                    <p className="Technology">
+                      <strong>PostgreSQL</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>Supabase</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>React</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>Tailwind</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>Node.js</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>Express.js</strong>
+                    </p>
+                    <p className="Technology">
+                      <strong>Google Cloud Platform</strong>
+                    </p>
                   </div>
                   <ul className="list-none pl-4 space-y-1 mb-4 mt-2 font-semibold">
                     <li>
-                      Capstone: TravelEase: A Portal for Travel Planning and
-                      Tourism Promotion in Tagaytay
+                      <strong>Capstone:</strong> TravelEase: A Portal for Travel
+                      Planning and Tourism Promotion in Tagaytay
                     </li>
                   </ul>
                   <p className="pl-4">
-                    Web-based, featuring collaborative itineraries, interactive
-                    maps, business listings, and user-generated reviews to
-                    enhance tourist decision-making and promote local
+                    Web-based, featuring{" "}
+                    <strong>
+                      collaborative itineraries, interactive maps, business
+                      listings, and user-generated reviews
+                    </strong>{" "}
+                    to enhance tourist decision-making and promote local
                     destinations.
                   </p>
                   <p className="pl-4 mt-2">
                     <span className="font-semibold">Contribution:</span> Project
-                    Manager & Core Developer; system planning, database and
-                    workflow design, core feature implementation, testing, and
-                    project defense.
+                    Manager & Core Developer;{" "}
+                    <strong>
+                      system planning, database and workflow design, core
+                      feature implementation, testing
+                    </strong>
+                    , and project defense.
                   </p>
                   <p className="pl-4 mt-2">
-                    <span className="font-semibold">Key Tools:</span> React
-                    Leaflet, OpenStreetMap, Nominatim API, Maps JavaScript API,
-                    Geocoding API, Directions API, Places API, Supabase Storage,
-                    Vercel, Railway
+                    <span className="font-semibold">Key Tools:</span>{" "}
+                    <strong>
+                      React Leaflet, OpenStreetMap, Nominatim API, Maps
+                      JavaScript API, Geocoding API, Directions API, Places API,
+                      Supabase Storage, Vercel, Railway
+                    </strong>
                   </p>
                 </li>
               </ul>
@@ -238,20 +341,23 @@ function Home() {
             {/* Bootcamp Experience */}
             <li className="my-grid">
               <h2 className="text-xl font-bold">
-                Bootcamp Experience — BASE404 Web Development
+                <strong>Bootcamp Experience — BASE404 Web Development</strong>
               </h2>
               <ul className="list-none pl-6 space-y-3 mt-2">
                 <li>
-                  BASE404 Full-Stack Development Bootcamp. Joined BASE404 and
-                  focused on their Full-Stack Development Course. Although the
-                  platform was eventually shut down, this experience introduced
-                  me to React and strengthened my understanding of modern
-                  frontend development. I also gained exposure to full-stack
-                  concepts involving HTML, CSS, JavaScript, and Express.
+                  <strong>BASE404 Full-Stack Development Bootcamp.</strong>{" "}
+                  Joined BASE404 and focused on their Full-Stack Development
+                  Course. Although the platform was eventually shut down, this
+                  experience introduced me to <strong>React</strong> and
+                  strengthened my understanding of{" "}
+                  <strong>modern frontend development</strong>. I also gained
+                  exposure to <strong>full-stack concepts</strong> involving{" "}
+                  <strong>HTML, CSS, JavaScript, and Express</strong>.
                 </li>
                 <li>
-                  This helped bridge the gap between academic learning and
-                  industry practices.
+                  This helped bridge the gap between{" "}
+                  <strong>academic learning</strong> and{" "}
+                  <strong>industry practices</strong>.
                 </li>
               </ul>
             </li>
@@ -259,15 +365,23 @@ function Home() {
             {/* Competitive & Team Experience */}
             <li className="my-grid">
               <h2 className="text-xl font-bold">
-                Competitive & Team Experience — Technolympics 2024
+                <strong>
+                  Competitive & Team Experience — Technolympics 2024
+                </strong>
               </h2>
               <ul className="list-none pl-6 space-y-3 mt-2">
-                <li>🏆 Technolympics 2024 Champion — TUP Tech Guild</li>
+                <li>
+                  🏆{" "}
+                  <strong>Technolympics 2024 Champion — TUP Tech Guild</strong>
+                </li>
                 <li>
                   Participated in Technolympics 2024 as a 2nd-year student with
                   friends and competed against senior teams. The competition
-                  involved multiple stations covering: Programming, Networking,
-                  UI/UX Designing, Ideathon & problem-solving challenges
+                  involved multiple stations covering:{" "}
+                  <strong>
+                    Programming, Networking, UI/UX Designing, Ideathon
+                  </strong>{" "}
+                  & problem-solving challenges.
                 </li>
               </ul>
             </li>
