@@ -4,17 +4,27 @@ import NavBar from "../components/NavBar";
 function Home() {
   useEffect(() => {
     const backgroundColor = document.getElementById("page-wrap");
-    backgroundColor?.classList.add("Home");
+
+    if (backgroundColor) {
+      backgroundColor.className = "";
+
+      backgroundColor.classList.add("page-wrap");
+      backgroundColor.classList.add("Home");
+    }
+
+    console.log(backgroundColor);
   }, []);
 
   return (
-    <div className="Home">
+    <div className="Home ">
       <NavBar />
 
       {/* HERO */}
       <div
         className="
-        pt-28
+        pt-25
+        sm:pt-10
+        md:pt-11
         px-[6%]  /* horizontal padding to match skills */
         flex flex-col-reverse md:flex-row
         items-center
@@ -25,35 +35,35 @@ function Home() {
       >
         {/* Text */}
         <div className="flex-1 text-center md:text-left space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight sm:mt-10 md:mt-15">
-            Hello, I'm <span className="font-bold">Vaughn</span>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl leading-tight mt-10 md:mt-15 hover-white">
+            Hello, I'm <span className="font-bold">Vaughn Joshua</span>
           </h1>
 
-          <p className="hidden md:block text-lg md:text-xl lg:text-xl max-w-xl mx-auto md:mx-0">
-            An aspiring software developer in the early stages of my journey,
-            focused on learning, building fundamentals, and growing through
-            experience.
+          <p className="hidden md:block text-lg md:text-xl lg:text-xl max-w-xl mx-auto md:mx-0 hover-white">
+            An <span className="font-bold">aspiring software developer</span> in
+            the early stages of my journey, focused on learning, building
+            fundamentals, and growing through experience.
           </p>
         </div>
 
         {/* Image */}
         <div className="flex-1 flex justify-center md:justify-end">
           <img
-            src="https://placehold.co/300x300"
+            src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768579733/112312_dcvgxn.png"
             alt=""
             className="
-              w-80 h-80
-              lg:w-90 lg:h-90
-              "
+              w-3/4 max-w-150 md:w-full md:max-w-175 lg:max-w-200 xl:max-w-225
+              h-auto
+            "
           />
         </div>
       </div>
 
       {/* SKILLS & TIMELINE */}
-      <div className="mt-[20vh] md:mt-[50vh] md:px-[6%] flex flex-col md:flex-row gap-10">
+      <div className="mt-[30vh] md:mt-[50vh] md:px-[6%] flex flex-col md:flex-row gap-10">
         {/* left */}
         <div className="flex flex-col-reverse md:flex-col md:w-1/3">
-          <h1 className="font-base text-3xl">
+          <h1 className="font-base text-3xl hover-white">
             My Path in <br />
             <span className="font-bold">Software Development</span>
           </h1>
@@ -89,7 +99,7 @@ function Home() {
         </div>
 
         {/* right */}
-        <div className="md:w-2/3 max-h-[80vh] overflow-y-scroll mb-5 space-y-8">
+        <div className="md:w-2/3 max-h-[79vh] overflow-y-scroll hide-scrollbar mb-5 space-y-7">
           {/* Timeline */}
           <ul className="list-none space-y-10">
             {/* First Spark */}

@@ -44,6 +44,26 @@
   background: rgb(255, 239, 210);
 }
 
+.Menu {
+  background: rgb(255, 210, 210);
+}
+
+.menuproject {
+  background: rgb(255, 164, 164);
+}
+
+.menuhome {
+  background: rgb(139, 212, 255);
+}
+
+.menuexperience {
+  background: rgb(245, 205, 131);
+}
+
+.menuabout {
+  background: rgb(145, 255, 217);
+}
+
 .Technology {
   display: flex;
   align-items: center;
@@ -74,25 +94,51 @@
   background: rgb(184, 222, 244);
 }
 
-@media (min-width: 640px) {
-  .my-grid {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    gap: 2rem;
-  }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-@media (min-width: 768px) {
-  .my-grid {
-    gap: 1rem;
-  }
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* spacing between h1 and span */
+  cursor: pointer;
+  transition: color 0.3s ease; /* smooth text color transition */
 }
 
-@media (min-width: 1024px) {
-  .my-grid:hover {
-    opacity: 1;
-  }
+.menu-item h1,
+.menu-item span {
+  transition: color 0.3s ease;
+  color: #1f2937; /* Tailwind's gray-800 */
+}
 
-  .group-list:hover .my-grid {
-    opacity: 0.5;
-  }
+.menu-item:hover h1,
+.menu-item:hover span {
+  color: white;
+}
+
+/* reusable hover effect */
+.hover-white:hover {
+  color: rgba(0, 0, 0, 0.662) !important;
+  transition: color 0.3s ease;
+}
+
+.hover-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* distance from text */
+  width: 0;
+  height: 2px;
+  background-color: currentColor; /* matches text color */
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
 }
