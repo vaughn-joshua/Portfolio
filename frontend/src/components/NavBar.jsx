@@ -18,10 +18,16 @@ function NavBar() {
   return (
     <div
       className="
-      fixed top-6 left-1/2 -translate-x-1/2
-      w-[90%] md:w-[95%]
-      flex justify-between items-center
-      z-100"
+        fixed top-6 left-1/2 -translate-x-1/2
+        w-[90%] md:w-[95%]
+        flex justify-between items-center
+        px-4 py-3
+        rounded-xl
+
+      bg-white/10 backdrop-blur-[1px]
+
+        z-50
+        "
     >
       <div className="flex items-center gap-2 sm:gap-3 " onClick={handleClick}>
         <img
