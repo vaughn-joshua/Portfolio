@@ -33,10 +33,8 @@ function Project() {
       <div>
         {/* TravelEase */}
         <div className="grid grid-cols-1 md:grid-cols-6 items-stretch gap-y-10 gap-x-5 py-12">
-          {/* Left spacer */}
           <div className="hidden md:block md:col-span-1" />
 
-          {/* Image */}
           <div className="md:col-span-2 h-full flex">
             <img
               src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768588948/Screenshot_2026-01-17_024214_q20kcu.jpg"
@@ -45,7 +43,6 @@ function Project() {
             />
           </div>
 
-          {/* Text */}
           <div className="md:col-span-3 space-y-4">
             <a href="https://www.travelease.app/" target="./">
               <h1 className="text-3xl font-bold md:text-lg lg:text-2xl leading-snug hover-white hover-underline">
@@ -65,21 +62,26 @@ function Project() {
             </div>
 
             <p className="text-sm leading-relaxed">
-              Web-based system featuring collaborative itineraries, interactive
-              maps, business listings, and user-generated reviews to enhance
-              tourist decision-making and promote local destinations.
+              Web-based system featuring{" "}
+              <strong>collaborative itineraries</strong>,{" "}
+              <strong>interactive maps</strong>,{" "}
+              <strong>business listings</strong>, and{" "}
+              <strong>user-generated reviews</strong> to enhance tourist
+              decision-making and promote local destinations.
             </p>
 
             <p className="text-sm">
-              <span className="font-semibold">Contribution:</span> Project
-              Manager & Core Developer; system planning, database and workflow
-              design, feature implementation, testing, and project defense.
+              <span className="font-semibold">Contribution:</span>{" "}
+              <strong>Project Manager & Core Developer</strong>; system
+              planning, <strong>database and workflow design</strong>, feature
+              implementation, testing, and project defense.
             </p>
 
             <p className="text-sm">
-              <span className="font-semibold">Key Tools:</span> React Leaflet,
-              OpenStreetMap, Nominatim API, Google Maps APIs, Supabase Storage,
-              Vercel, Railway
+              <span className="font-semibold">Key Tools:</span>{" "}
+              <strong>React Leaflet</strong>, OpenStreetMap, Nominatim API,{" "}
+              <strong>Google Maps APIs</strong>, Supabase Storage, Vercel,
+              Railway
             </p>
           </div>
         </div>
@@ -88,7 +90,6 @@ function Project() {
         <div className="grid grid-cols-1 md:grid-cols-6 items-stretch gap-y-10 gap-x-5 py-12">
           <div className="hidden md:block md:col-span-1" />
 
-          {/* Left (image) – 40% */}
           <div className="md:col-span-2 h-full flex">
             <img
               src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768587712/Screenshot_2026-01-17_022108_ao5xgr.jpg"
@@ -97,7 +98,6 @@ function Project() {
             />
           </div>
 
-          {/* Right (text) – 60% */}
           <div className="md:col-span-3 space-y-4">
             <a
               href="https://github.com/vaughn-joshua/Order---Menu-System.git"
@@ -118,31 +118,31 @@ function Project() {
             </div>
 
             <p className="text-sm leading-relaxed">
-              A two-module web system for a local food business, enabling
-              customers to view the menu and place orders, and business owners
-              to track and manage orders efficiently.
+              A <strong>two-module web system</strong> for a local food
+              business, enabling customers to{" "}
+              <strong>view the menu and place orders</strong>, and business
+              owners to <strong>track and manage orders efficiently</strong>.
             </p>
 
             <p className="text-sm">
-              <span className="font-semibold">Contribution:</span> Project
-              Manager and lead developer; planned system modules and workflows,
-              designed database structure in Google Sheets
+              <span className="font-semibold">Contribution:</span>{" "}
+              <strong>Project Manager and Lead Developer</strong>; planned
+              system modules and workflows, designed{" "}
+              <strong>database structure</strong> in Google Sheets
             </p>
 
             <p className="text-sm">
-              <span className="font-semibold">Key Tools:</span> Google Sheets
-              Database (relational structure with multiple tables), Google
-              Sheets API
+              <span className="font-semibold">Key Tools:</span>{" "}
+              <strong>Google Sheets Database</strong> (relational structure with
+              multiple tables), <strong>Google Sheets API</strong>
             </p>
           </div>
         </div>
 
         {/* Student Management System */}
         <div className="grid grid-cols-1 md:grid-cols-6 items-stretch gap-y-10 gap-x-5 py-12">
-          {/* Left spacer (empty) */}
           <div className="hidden md:block md:col-span-1" />
 
-          {/* Middle (image) */}
           <div className="md:col-span-2 h-full flex">
             <img
               src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768588948/Screenshot_2026-01-17_024041_qq6ggp.jpg"
@@ -151,7 +151,6 @@ function Project() {
             />
           </div>
 
-          {/* Right (text) */}
           <div className="md:col-span-3 space-y-4">
             <h1 className="text-3xl font-bold md:text-lg lg:text-2xl leading-snug hover-white hover-underline">
               Student Management System
@@ -163,19 +162,19 @@ function Project() {
             </div>
 
             <p className="text-sm leading-relaxed">
-              Developed using Java for the application interface and MySQL as
-              the backend database, tailored for my alma mater, the
-              Technological University of the Philippines (TUP).
+              Developed using <strong>Java</strong> for the application
+              interface and <strong>MySQL</strong> as the backend database,
+              tailored for my alma mater, the{" "}
+              <strong>Technological University of the Philippines (TUP)</strong>
+              .
             </p>
           </div>
         </div>
 
         {/* MyWordle */}
         <div className="grid grid-cols-1 md:grid-cols-6 items-stretch gap-y-10 gap-x-5 py-12">
-          {/* Left spacer */}
           <div className="hidden md:block md:col-span-1" />
 
-          {/* Image */}
           <div className="md:col-span-2 h-full flex">
             <img
               src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768589205/Screenshot_2026-01-17_024519_eovkhn.jpg"
@@ -184,7 +183,6 @@ function Project() {
             />
           </div>
 
-          {/* Text */}
           <div className="md:col-span-3 space-y-4">
             <a href="https://wordle-seven-psi.vercel.app/" target="./">
               <h1 className="text-3xl font-bold md:text-lg lg:text-2xl leading-snug hover-white hover-underline">
@@ -200,24 +198,23 @@ function Project() {
             </div>
 
             <p className="text-sm leading-relaxed">
-              A web-based Wordle clone where users guess a hidden word with
-              limited attempts and receive real-time feedback on letter
-              positions.
+              A web-based <strong>Wordle clone</strong> where users guess a
+              hidden word with <strong>limited attempts</strong> and receive{" "}
+              <strong>real-time feedback</strong> on letter positions.
             </p>
 
             <p className="text-sm">
-              Built as a learning project to strengthen skills in React,
-              TypeScript, and frontend–backend integration.
+              Built as a <strong>learning project</strong> to strengthen skills
+              in <strong>React</strong>, <strong>TypeScript</strong>, and{" "}
+              <strong>frontend–backend integration</strong>.
             </p>
           </div>
         </div>
 
         {/* Figma - Budgeting App */}
         <div className="grid grid-cols-1 md:grid-cols-6 items-start gap-y-10 gap-x-5 py-12">
-          {/* Left spacer */}
           <div className="hidden md:block md:col-span-1" />
 
-          {/* Image */}
           <div className="md:col-span-2 flex items-start">
             <img
               src="https://res.cloudinary.com/dezl3r1u5/image/upload/v1768589205/Screenshot_2026-01-17_024628_lghkh6.jpg"
@@ -226,10 +223,9 @@ function Project() {
             />
           </div>
 
-          {/* Text */}
           <div className="md:col-span-3 space-y-4">
             <a
-              href="https://www.figma.com/proto/n4UyToWp3stdAYn9785fZE/Cash-Budgeting-App?node-id=22-7&node-type=canvas&t=XEOj36jeAoUru5tS-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=218%3A85&show-proto-sidebar=1"
+              href="https://www.figma.com/proto/n4UyToWp3stdAYn9785fZE/Cash-Budgeting-App"
               target="./"
             >
               <h1 className="text-3xl font-bold md:text-lg lg:text-2xl leading-snug hover-white hover-underline">
@@ -242,9 +238,10 @@ function Project() {
             </div>
 
             <p className="text-sm leading-relaxed">
-              Save It! is a cash budgeting app prototype designed in Figma,
-              created to practice UI/UX design principles such as layout,
-              usability, and visual clarity.
+              <strong>Save It!</strong> is a cash budgeting app prototype
+              designed in Figma, created to practice{" "}
+              <strong>UI/UX design principles</strong> such as layout,
+              usability, and <strong>visual clarity</strong>.
             </p>
           </div>
         </div>
