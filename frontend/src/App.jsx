@@ -1,25 +1,7 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Project from "./pages/Project";
-import Experience from "./pages/Experience";
-import About from "./pages/About";
-import Menu from "./components/Menu";
-
 function App() {
   return (
-    <div className="app-container">
-      <div className="page-wrap" id="page-wrap">
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/project" element={<Project />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/menu/:page" element={<Menu />} />
-          </Routes>
-        </div>
-      </div>
+    <div className="app-shell">
+      <h1>Portfolio redesign — work in progress</h1>
     </div>
   );
 }
