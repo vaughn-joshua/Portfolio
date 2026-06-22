@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import Hero from "./routes/HeroPage.jsx";
 import { useScrollSpy } from "./hooks/useScrollSpy.js";
 
-const SECTION_IDS = ["about", "experience", "projects", "education", "contact"];
+const SECTION_IDS = ["about", "experience", "projects", "education"];
 
 // Layout shell: the full-viewport Hero sits on top; below it the sticky Sidebar
 // (.left) stays put while routed pages swap into the scrolling .right column.

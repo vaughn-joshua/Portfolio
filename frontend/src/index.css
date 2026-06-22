@@ -328,15 +328,24 @@ a {
   display: flex;
   gap: 14px;
   align-items: center;
+  position: relative;
 }
-.socials a {
+.socials a,
+.socials-email {
   color: var(--muted);
   transition:
     color 0.2s,
     transform 0.2s;
   display: flex;
 }
-.socials a:hover {
+.socials-email {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.socials a:hover,
+.socials-email:hover {
   color: var(--heading);
   transform: translateY(-2px);
 }
@@ -344,6 +353,28 @@ a {
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+.copy-toast {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  background: var(--surface);
+  color: var(--heading);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.copy-toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ═══════════════════════════════
@@ -678,8 +709,22 @@ section {
 }
 
 /* ═══════════════════════════════
-   OVERLAY SCREENS (now routed pages)
+   OVERLAY SCREENS (full-screen routed pages)
 ═══════════════════════════════ */
+/* Full-viewport takeover: covers the hero + sidebar entirely. .open is added
+   on mount (see Overlay.jsx) to fade the page in. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 100;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.overlay.open {
+  opacity: 1;
+}
 .overlay-inner {
   max-width: 760px;
   margin: 0 auto;
@@ -785,6 +830,11 @@ section {
   font-size: 0.875rem;
   color: var(--text);
   line-height: 1.75;
+}
+.detail-text strong,
+.detail-bullets strong {
+  color: var(--heading);
+  font-weight: 500;
 }
 .detail-bullets {
   list-style: none;

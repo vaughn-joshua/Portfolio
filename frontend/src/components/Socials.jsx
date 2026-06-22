@@ -1,3 +1,7 @@
+import { useState } from "react";
+
+const EMAIL = "dev.vaughnjoshua@gmail.com";
+
 // Social links with inline SVG icons (ported from the reference).
 const ICONS = {
   GitHub: (
@@ -16,25 +20,62 @@ const ICONS = {
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/vaughn-joshua" },
-  { label: "Email", href: "mailto:dev.vaughnjoshua@gmail.com" },
+  // Email isn't a link — clicking copies the address and shows a toast.
+  { label: "Email" },
   { label: "Facebook", href: "https://www.facebook.com/vaughnjoshua.bermundo/" },
   { label: "Instagram", href: "https://www.instagram.com/vaughnjoshuab/" },
 ];
 
 function Socials() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      // Fallback for browsers/contexts without the async clipboard API.
+      const ta = document.createElement("textarea");
+      ta.value = EMAIL;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="socials">
-      {SOCIALS.map((s) => (
-        <a
-          key={s.label}
-          href={s.href}
-          aria-label={s.label}
-          target={s.href.startsWith("http") ? "_blank" : undefined}
-          rel={s.href.startsWith("http") ? "noopener" : undefined}
-        >
-          <svg viewBox="0 0 24 24">{ICONS[s.label]}</svg>
-        </a>
-      ))}
+      {SOCIALS.map((s) =>
+        s.label === "Email" ? (
+          <button
+            key={s.label}
+            type="button"
+            onClick={copyEmail}
+            aria-label="Copy email address"
+            className="socials-email"
+          >
+            <svg viewBox="0 0 24 24">{ICONS[s.label]}</svg>
+          </button>
+        ) : (
+          <a
+            key={s.label}
+            href={s.href}
+            aria-label={s.label}
+            target={s.href.startsWith("http") ? "_blank" : undefined}
+            rel={s.href.startsWith("http") ? "noopener" : undefined}
+          >
+            <svg viewBox="0 0 24 24">{ICONS[s.label]}</svg>
+          </a>
+        ),
+      )}
+
+      <span className={`copy-toast${copied ? " show" : ""}`} role="status">
+        Email copied
+      </span>
     </div>
   );
 }

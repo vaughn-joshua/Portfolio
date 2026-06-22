@@ -1,3 +1,4 @@
+import Overlay from "../components/ui/Overlay.jsx";
 import BackButton from "../components/ui/BackButton.jsx";
 import SectionLabel from "../components/ui/SectionLabel.jsx";
 import Tag from "../components/ui/Tag.jsx";
@@ -39,7 +40,7 @@ const TOOLS = [
 
 function BeyondPage() {
   return (
-    <div className="overlay-inner">
+    <Overlay>
       <BackButton label="Back to portfolio" />
 
       <div className="beyond-hero-block">
@@ -151,7 +152,7 @@ function BeyondPage() {
         </svg>
         dev.vaughnjoshua@gmail.com
       </a>
-    </div>
+    </Overlay>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import Overlay from "../components/ui/Overlay.jsx";
 import BackButton from "../components/ui/BackButton.jsx";
 import Tag from "../components/ui/Tag.jsx";
 import { PROJECTS } from "../components/sections/Projects.jsx";
@@ -29,20 +30,82 @@ const INTERNSHIP = {
     "GCS",
     "ESLint",
   ],
-  overview:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.",
+  overview: (
+    <>
+      During my internship at{" "}
+      <strong>EasyCom Japan Philippines Inc.</strong>, I worked on{" "}
+      <strong>migrating a legacy, web-based HR system into a fully native
+      mobile app</strong>, built with Expo/React Native and backed by a Prisma
+      data layer. The system handled core HR functions for company staff — I
+      personally owned two major pieces of it:{" "}
+      <strong>payroll processing</strong> and{" "}
+      <strong>government benefits management</strong>, each rebuilt from the
+      ground up for mobile so employees could handle HR tasks from their phones
+      instead of being tied to a desktop.
+    </>
+  ),
   whatIDid: [
-    "Owned the Government Benefits module (SSS, PhilHealth, Pag-IBIG, BIR Tax) end-to-end — Prisma schema, TSOA backend services, and Expo React Native screens.",
-    "Engineered a 740-line PDF parsing service extracting structured contribution and tax-bracket data from non-columnar government rate-table PDFs, eliminating manual data entry.",
-    "Built a schema-driven dynamic form system in React Native with auto-prefill for edit flows and payslip PDF generation.",
-    "Implemented a Multer + Google Cloud Storage file upload pipeline for document handling.",
-    "Wrote technical documentation for team knowledge-sharing and handover.",
-    "Collaborated in a structured corporate dev environment, communicating progress and blockers to supervisors.",
+    <>
+      <strong>Owned the Government Benefits module</strong> (SSS, PhilHealth,
+      Pag-IBIG, BIR Tax) <strong>end-to-end</strong> — Prisma schema, TSOA
+      backend services, and Expo React Native screens.
+    </>,
+    <>
+      Engineered a <strong>740-line PDF parsing service</strong> extracting
+      structured contribution and tax-bracket data from{" "}
+      <strong>non-columnar government rate-table PDFs</strong>, eliminating
+      manual data entry.
+    </>,
+    <>
+      Built a <strong>schema-driven dynamic form system</strong> in React
+      Native with auto-prefill for edit flows and{" "}
+      <strong>payslip PDF generation</strong>.
+    </>,
+    <>
+      Implemented a <strong>Multer + Google Cloud Storage</strong> file upload
+      pipeline for document handling.
+    </>,
+    <>
+      Wrote <strong>technical documentation</strong> for team knowledge-sharing
+      and handover.
+    </>,
+    <>
+      Collaborated in a structured corporate dev environment, communicating
+      progress and blockers to supervisors.
+    </>,
   ],
-  whatILearned:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",
-  challenges:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.",
+  whatILearned: (
+    <>
+      Before the internship, I’d been planning to learn React Native on my own —
+      by the end of it, <strong>I’d shipped my own app built with it</strong>.
+      Working on a live system also taught me{" "}
+      <strong>how much a client’s time is worth</strong>, which pushed me to
+      write <strong>code that’s maintainable for future developers</strong>{" "}
+      (including future me), and to communicate clearly with the team so we were
+      aligned on the approach before diving into development.
+    </>
+  ),
+  challenges: [
+    <>
+      <strong>Understanding the legacy system</strong> — the first hurdle was
+      getting up to speed on a system I didn’t build, and understanding how my
+      lead developer wanted the migration approached before I could contribute
+      meaningfully.
+    </>,
+    <>
+      <strong>Reconciling new features with legacy logic</strong> — new feature
+      requirements didn’t always map cleanly onto the legacy system’s existing
+      logic, so I couldn’t just port the old code over. Parts of it had to be
+      rethought to support what the new version actually needed to do.
+    </>,
+    <>
+      <strong>Redundant forms across screens</strong> — each screen originally
+      needed its own hardcoded form, leading to a lot of repeated logic. I
+      solved this by <strong>building a dynamic form renderer</strong> that
+      generated the right fields and validation rules from a single
+      configuration, instead of duplicating form logic screen by screen.
+    </>,
+  ],
 };
 
 function DetailPage() {
@@ -54,10 +117,10 @@ function DetailPage() {
 
   if (!data) {
     return (
-      <div className="overlay-inner">
+      <Overlay>
         <BackButton label="Back" />
         <p>Not found.</p>
-      </div>
+      </Overlay>
     );
   }
 
@@ -66,7 +129,7 @@ function DetailPage() {
   const next = !isInternship ? PROJECTS[idx + 1] : null;
 
   return (
-    <div className="overlay-inner">
+    <Overlay>
       <BackButton label={isInternship ? "Back to experience" : "All projects"} />
 
       {data.image ? (
@@ -131,7 +194,15 @@ function DetailPage() {
       <p className="detail-text">{data.whatILearned}</p>
 
       <p className="detail-section-title">Challenges</p>
-      <p className="detail-text">{data.challenges}</p>
+      {Array.isArray(data.challenges) ? (
+        <ul className="detail-bullets">
+          {data.challenges.map((c, i) => (
+            <li key={i}>{c}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="detail-text">{data.challenges}</p>
+      )}
 
       {(prev || next) && (
         <div className="proj-nav">
@@ -153,7 +224,7 @@ function DetailPage() {
           </div>
         </div>
       )}
-    </div>
+    </Overlay>
   );
 }
 

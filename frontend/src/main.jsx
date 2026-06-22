@@ -13,13 +13,17 @@ createRoot(document.getElementById("root")).render(
     {/* basename matches the GitHub Pages subpath (vaughn-joshua.github.io/Portfolio) */}
     <BrowserRouter basename="/Portfolio">
       <Routes>
-        {/* App is the persistent layout shell: Sidebar + <Outlet/> */}
+        {/* App is the persistent layout shell: Hero + Sidebar + <Outlet/> */}
         <Route element={<App />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="projects/:slug" element={<DetailPage />} />
-          <Route path="beyond" element={<BeyondPage />} />
         </Route>
+
+        {/* Detail/About/Beyond are full-screen overlay pages — they render
+            outside the App shell so they take over the whole viewport, hiding
+            the hero and sidebar (matches the reference overlay behavior). */}
+        <Route path="about" element={<AboutPage />} />
+        <Route path="projects/:slug" element={<DetailPage />} />
+        <Route path="beyond" element={<BeyondPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

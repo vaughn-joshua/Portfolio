@@ -1,5 +1,30 @@
 import { Link } from "react-router-dom";
 import SectionLabel from "../ui/SectionLabel.jsx";
+import Tag from "../ui/Tag.jsx";
+
+// Full About overlay-page: expanded bio + technical skills grid.
+const SKILLS = {
+  Languages: ["TypeScript", "JavaScript", "Java", "C", "C++"],
+  Backend: ["Node.js", "Express.js", "TSOA", "Prisma", "REST API", "JWT Auth"],
+  "Frontend & Mobile": [
+    "React",
+    "React Native",
+    "Expo",
+    "Tailwind",
+    "Bootstrap",
+    "HTML/CSS",
+  ],
+  "Databases & Tools": [
+    "PostgreSQL",
+    "MySQL",
+    "TiDB Cloud",
+    "Docker",
+    "Git",
+    "GCP",
+    "Figma",
+    "Lint",
+  ],
+};
 
 // Collapsed about card on Home; clicking routes to the full /about page.
 function About() {
@@ -8,12 +33,29 @@ function About() {
       <SectionLabel>About</SectionLabel>
       <Link to="/about" className="about-card">
         <div className="about-card-top">
-          <p className="about-card-bio">
-            <strong>Information Systems graduate</strong> from TUP–Manila. I
-            build full stack mobile and web apps — most recently owning an entire
-            payroll module end-to-end at EasyCom Japan Philippines Inc. I write
-            code that's maintainable, communicate clearly, and ship on time.
-          </p>
+          <div>
+            <p className="about-card-bio">
+              <strong>Information Systems student</strong> from TUP–Manila,
+              awaiting graduation this August. I build full stack mobile and web
+              apps and most recently owned an entire payroll module end-to-end
+              at EasyCom Japan Philippines Inc. Watching something I coded turn
+              into an app on my own phone — that's the moment that hooked me.
+            </p>
+            <br />
+            <SectionLabel>Technical Skills</SectionLabel>
+            <div className="skills-grid">
+              {Object.entries(SKILLS).map(([group, tags]) => (
+                <div key={group}>
+                  <p className="skill-group-label">{group}</p>
+                  <div className="skill-tags">
+                    {tags.map((t) => (
+                      <Tag key={t}>{t}</Tag>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="about-expand-hint">
             Read more
             <svg viewBox="0 0 24 24">
