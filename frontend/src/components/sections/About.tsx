@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import SectionLabel from "../ui/SectionLabel.jsx";
-import Tag from "../ui/Tag.jsx";
+import SectionLabel from "../ui/SectionLabel";
+import Tag from "../ui/Tag";
 
 // Full About overlay-page: expanded bio + technical skills grid.
-const SKILLS = {
+const SKILLS: Record<string, string[]> = {
   Languages: ["TypeScript", "JavaScript", "Java", "C", "C++"],
   Backend: ["Node.js", "Express.js", "TSOA", "Prisma", "REST API", "JWT Auth"],
   "Frontend & Mobile": [

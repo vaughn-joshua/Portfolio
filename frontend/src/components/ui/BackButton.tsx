@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 // Back control for overlay-style pages. navigate(-1) returns wherever the user came from.
-function BackButton({ label = "Back" }) {
+function BackButton({ label = "Back" }: { label?: string }) {
   const navigate = useNavigate();
   return (
     <button className="overlay-back" onClick={() => navigate(-1)}>

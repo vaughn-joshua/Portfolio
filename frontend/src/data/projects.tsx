@@ -1,11 +1,9 @@
-import SectionLabel from "../ui/SectionLabel.jsx";
-import ProjectCard from "./ProjectCard.jsx";
+import type { Project } from "../types";
 
-// Project data lives inline here (no data/ folder). Ported from reference/index.html.
-// NOTE: DetailPage imports PROJECTS from here to render /projects/:slug.
-// The overview/whatILearned/challenges copy mirrors the reference, which still uses
-// Lorem ipsum placeholders for those fields — swap in real write-ups when ready.
-export const PROJECTS = [
+// Portfolio project data. Ported from reference/index.html.
+// Consumed by the Projects list (sections/Projects.tsx) and the project
+// detail route (routes/DetailPage.tsx).
+export const PROJECTS: Project[] = [
   {
     slug: "travelease",
     title: "TravelEase",
@@ -433,18 +431,3 @@ export const PROJECTS = [
     ),
   },
 ];
-
-function Projects() {
-  return (
-    <section id="projects">
-      <SectionLabel>Projects</SectionLabel>
-      <div>
-        {PROJECTS.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export default Projects;

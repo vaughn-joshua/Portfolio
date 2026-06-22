@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import SectionLabel from "../ui/SectionLabel.jsx";
-import Tag from "../ui/Tag.jsx";
+import SectionLabel from "../ui/SectionLabel";
+import Tag from "../ui/Tag";
 
 // Professional experience. The internship detail reuses the /projects/:slug route.
 function Experience() {

@@ -1,4 +1,4 @@
-import SectionLabel from "../ui/SectionLabel.jsx";
+import SectionLabel from "../ui/SectionLabel";
 
 // Education & awards. Inline content — add remaining awards from the reference.
 function Education() {

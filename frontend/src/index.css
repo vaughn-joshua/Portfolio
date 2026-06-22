@@ -28,9 +28,9 @@
   margin: 0;
   padding: 0;
 }
-html {
-  scroll-behavior: smooth;
-}
+/* No global smooth scroll: it makes back-navigation scroll restoration animate
+   from the top (flashing the hero). Intentional smooth scrolling is requested
+   per-call via scrollIntoView({ behavior: "smooth" }) instead. */
 body {
   background: var(--bg);
   color: var(--text);
@@ -957,7 +957,82 @@ section {
 
 /* ═══════════════════════════════
    BEYOND THE CODE
+   Full-viewport takeover that mirrors the Home layout: scrolling content on
+   the LEFT, sticky identity/tools/contact panel on the RIGHT. Slides in from
+   the right on mount (.open added in BeyondPage.jsx).
 ═══════════════════════════════ */
+.beyond-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 100;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.beyond-screen.open {
+  opacity: 1;
+  transform: translateX(0);
+}
+#beyond-layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  gap: 72px;
+}
+.beyond-main {
+  flex: 1;
+  min-width: 0;
+  padding: 72px 0 120px;
+}
+.beyond-main section {
+  margin-bottom: 64px;
+  scroll-margin-top: 72px;
+}
+.beyond-aside {
+  width: var(--left-w);
+  min-width: var(--left-w);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 72px 0;
+}
+.beyond-aside-top {
+  display: flex;
+  flex-direction: column;
+}
+.beyond-aside-tagline {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 8px;
+  margin-bottom: 18px;
+  max-width: 240px;
+  line-height: 1.6;
+}
+.beyond-tools-label {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 22px;
+  margin-bottom: 10px;
+}
+.beyond-aside-contact .contact-body {
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  max-width: 260px;
+}
+.beyond-aside-contact .socials {
+  margin-top: 16px;
+}
 .beyond-hero-block {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -977,12 +1052,15 @@ section {
   border-radius: 4px;
   padding: 3px 9px;
   margin-bottom: 10px;
+  width: fit-content;
 }
 .beyond-name {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--heading);
-  margin-bottom: 10px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
 }
 .beyond-bio {
   font-size: 0.86rem;
@@ -1082,6 +1160,29 @@ section {
   }
   .overlay-inner {
     padding: 44px 20px 80px;
+  }
+  #beyond-layout {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 0;
+  }
+  .beyond-aside {
+    position: static;
+    height: auto;
+    width: 100%;
+    min-width: unset;
+    padding: 44px 0 0;
+    order: -1; /* identity panel above the scrolling content on mobile */
+  }
+  .beyond-aside-tagline,
+  .beyond-aside-contact .contact-body {
+    max-width: none;
+  }
+  .beyond-aside-contact {
+    display: none; /* contact repeats; hide the sticky copy on mobile */
+  }
+  .beyond-main {
+    padding: 32px 0 80px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

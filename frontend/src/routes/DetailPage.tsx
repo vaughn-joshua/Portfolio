@@ -1,13 +1,14 @@
 import { useParams, Link } from "react-router-dom";
-import Overlay from "../components/ui/Overlay.jsx";
-import BackButton from "../components/ui/BackButton.jsx";
-import Tag from "../components/ui/Tag.jsx";
-import { PROJECTS } from "../components/sections/Projects.jsx";
+import Overlay from "../components/ui/Overlay";
+import BackButton from "../components/ui/BackButton";
+import Tag from "../components/ui/Tag";
+import { PROJECTS } from "../data/projects";
+import type { Project } from "../types";
 
 // The internship is a special case reusing this same route (/projects/internship).
 // Ported from reference/index.html (INTERNSHIP). whatIDid is real; the
 // overview/whatILearned/challenges fields mirror the reference's placeholders.
-const INTERNSHIP = {
+const INTERNSHIP: Project = {
   slug: "internship",
   title: "Full Stack Mobile Developer Intern",
   subtitle: "EasyCom Japan Philippines Inc. · Feb 2026 – Jun 2026 · 486 hrs",
@@ -32,13 +33,14 @@ const INTERNSHIP = {
   ],
   overview: (
     <>
-      During my internship at{" "}
-      <strong>EasyCom Japan Philippines Inc.</strong>, I worked on{" "}
-      <strong>migrating a legacy, web-based HR system into a fully native
-      mobile app</strong>, built with Expo/React Native and backed by a Prisma
-      data layer. The system handled core HR functions for company staff — I
-      personally owned two major pieces of it:{" "}
-      <strong>payroll processing</strong> and{" "}
+      During my internship at <strong>EasyCom Japan Philippines Inc.</strong>, a{" "}
+      <strong>Japanese company based in the Philippines</strong>, I worked on{" "}
+      <strong>
+        migrating a legacy, web-based HR system into a fully native mobile app
+      </strong>
+      , built with Expo/React Native and backed by a Prisma data layer. The
+      system handled core HR functions for company staff — I personally owned
+      two major pieces of it: <strong>payroll processing</strong> and{" "}
       <strong>government benefits management</strong>, each rebuilt from the
       ground up for mobile so employees could handle HR tasks from their phones
       instead of being tied to a desktop.
@@ -57,8 +59,8 @@ const INTERNSHIP = {
       manual data entry.
     </>,
     <>
-      Built a <strong>schema-driven dynamic form system</strong> in React
-      Native with auto-prefill for edit flows and{" "}
+      Built a <strong>schema-driven dynamic form system</strong> in React Native
+      with auto-prefill for edit flows and{" "}
       <strong>payslip PDF generation</strong>.
     </>,
     <>
@@ -109,11 +111,11 @@ const INTERNSHIP = {
 };
 
 function DetailPage() {
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
 
   const isInternship = slug === "internship";
   const idx = PROJECTS.findIndex((p) => p.slug === slug);
-  const data = isInternship ? INTERNSHIP : PROJECTS[idx];
+  const data: Project | undefined = isInternship ? INTERNSHIP : PROJECTS[idx];
 
   if (!data) {
     return (
@@ -130,7 +132,9 @@ function DetailPage() {
 
   return (
     <Overlay>
-      <BackButton label={isInternship ? "Back to experience" : "All projects"} />
+      <BackButton
+        label={isInternship ? "Back to experience" : "All projects"}
+      />
 
       {data.image ? (
         <img className="detail-hero" src={data.image} alt={data.title} />

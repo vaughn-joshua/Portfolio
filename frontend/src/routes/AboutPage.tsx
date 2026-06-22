@@ -1,10 +1,10 @@
-import Overlay from "../components/ui/Overlay.jsx";
-import BackButton from "../components/ui/BackButton.jsx";
-import SectionLabel from "../components/ui/SectionLabel.jsx";
-import Tag from "../components/ui/Tag.jsx";
+import Overlay from "../components/ui/Overlay";
+import BackButton from "../components/ui/BackButton";
+import SectionLabel from "../components/ui/SectionLabel";
+import Tag from "../components/ui/Tag";
 
 // Full About overlay-page: expanded bio + technical skills grid.
-const SKILLS = {
+const SKILLS: Record<string, string[]> = {
   Languages: ["TypeScript", "JavaScript", "Java", "C", "C++"],
   Backend: ["Node.js", "Express.js", "TSOA", "Prisma", "REST API", "JWT Auth"],
   "Frontend & Mobile": [
@@ -41,8 +41,9 @@ function AboutPage() {
           <strong>building full stack mobile and web applications</strong>.
         </p>
         <p style={{ marginBottom: 12 }}>
-          At <strong>EasyCom Japan Philippines Inc.</strong>, I owned the{" "}
-          <strong>Government Benefits module end-to-end</strong> — from
+          At <strong>EasyCom Japan Philippines Inc.</strong>, a{" "}
+          <strong>Japanese company based in the Philippines</strong>, I owned
+          the <strong>Government Benefits module end-to-end</strong> — from
           designing the Prisma schema to shipping the Expo React Native screens
           — inside a real corporate dev team. I built a{" "}
           <strong>PDF parsing service</strong> to automate extracting data from

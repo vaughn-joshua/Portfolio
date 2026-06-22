@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./components/Sidebar.jsx";
-import Hero from "./routes/HeroPage.jsx";
-import { useScrollSpy } from "./hooks/useScrollSpy.js";
+import Sidebar from "./components/Sidebar";
+import Hero from "./routes/HeroPage";
+import { useScrollSpy } from "./hooks/useScrollSpy";
 
 const SECTION_IDS = ["about", "experience", "projects", "education"];
 

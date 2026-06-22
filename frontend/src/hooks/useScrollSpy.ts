@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 // Watches the given section ids and returns the one currently in view.
 // Used by Home to highlight the active SideNav link.
 // Usage: const active = useScrollSpy(["about", "experience", "projects"]);
-export function useScrollSpy(ids) {
-  const [active, setActive] = useState(ids[0]);
+export function useScrollSpy(ids: string[]): string {
+  const [active, setActive] = useState<string>(ids[0]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,7 +18,7 @@ export function useScrollSpy(ids) {
 
     const els = ids
       .map((id) => document.getElementById(id))
-      .filter(Boolean);
+      .filter((el): el is HTMLElement => el !== null);
     els.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();

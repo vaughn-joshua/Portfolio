@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import SideNav from "./SideNav.jsx";
-import Socials from "./Socials.jsx";
+import SideNav from "./SideNav";
+import Socials from "./Socials";
 import resumeUrl from "../assets/Barit_Resume_Developer.pdf";
 
 // The sticky .left column: identity, action buttons, in-page nav, and socials.
-function Sidebar({ active }) {
+function Sidebar({ active }: { active: string }) {
   return (
     <aside className="left">
       <div>
@@ -20,7 +20,6 @@ function Sidebar({ active }) {
           </p>
 
           <div className="left-actions">
-            {/* TODO: wire real resume PDF URL (reference left it as a placeholder too) */}
             <a
               className="left-action-btn"
               href={resumeUrl}

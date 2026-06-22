@@ -2,13 +2,13 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import App from "./App.jsx";
-import Home from "./routes/Home.jsx";
-import AboutPage from "./routes/AboutPage.jsx";
-import DetailPage from "./routes/DetailPage.jsx";
-import BeyondPage from "./routes/BeyondPage.jsx";
+import App from "./App";
+import Home from "./routes/Home";
+import AboutPage from "./routes/AboutPage";
+import DetailPage from "./routes/DetailPage";
+import BeyondPage from "./routes/BeyondPage";
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     {/* basename matches the GitHub Pages subpath (vaughn-joshua.github.io/Portfolio) */}
     <BrowserRouter basename="/Portfolio">

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import Tag from "../ui/Tag.jsx";
+import Tag from "../ui/Tag";
+import type { Project } from "../../types";
 
 // One project row. Clicking routes to its detail page.
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: Project }) {
   const { slug, title, image, desc, tags } = project;
 
   return (
