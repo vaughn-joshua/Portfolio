@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import SectionLabel from "../components/ui/SectionLabel";
 import Tag from "../components/ui/Tag";
 import Socials from "../components/Socials";
+import BurgerNav from "../components/BurgerNav";
+import bpoResumeUrl from "../assets/Barit_Resume_BPO.pdf";
 
 // "Beyond the Code" — soft skills, non-dev experience, for non-technical roles.
 // Mirrors the Home/"My Work" sticky layout, but with the sticky panel on the
@@ -125,11 +127,66 @@ function BeyondPage() {
     setTimeout(done, 500);
   };
 
+  // Identity + action buttons for the aside; reused as the mobile burger header.
+  const identity = (
+    <>
+      <span className="beyond-role-tag">Beyond the Code</span>
+      <p className="beyond-name">
+        Vaughn Joshua
+        <br />
+        B. Barit
+      </p>
+      <p className="beyond-aside-tagline">
+        More than technical skills — easy to work with, fast to learn,
+        service-oriented.
+      </p>
+
+      <div className="left-actions">
+        <a
+          className="left-action-btn"
+          href={bpoResumeUrl}
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>
+          View Resume
+        </a>
+        <Link
+          className="left-action-btn beyond-left-btn"
+          to="/"
+          state={{ scrollTo: "about" }}
+          onClick={goToCode}
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+          The Code
+        </Link>
+      </div>
+    </>
+  );
+
   return (
     <div className="beyond-screen" ref={ref}>
+      {/* Mobile-only: whole aside collapses into this menu (no hero to gate on). */}
+      <BurgerNav
+        items={NAV_ITEMS}
+        active={active}
+        onNavigate={scrollTo}
+        header={identity}
+        footer={<Socials />}
+      />
       <div id="beyond-layout">
         {/* Scrolling content — LEFT */}
         <main className="beyond-main">
+          {/* Mobile-only mode indicator at the top of the content (scrolls
+              normally with the page; the aside that shows this tag on desktop
+              is hidden behind the burger on mobile). */}
+          <div className="beyond-mobile-banner">Beyond the Code</div>
+
           <section id="beyond-about">
             <SectionLabel>About</SectionLabel>
             <div className="beyond-hero-block">
@@ -248,28 +305,7 @@ function BeyondPage() {
         {/* Sticky identity / nav / tools / contact panel — RIGHT */}
         <aside className="beyond-aside">
           <div className="beyond-aside-top">
-            <span className="beyond-role-tag">Beyond the Code</span>
-            <p className="beyond-name">
-              Vaughn Joshua
-              <br />
-              B. Barit
-            </p>
-            <p className="beyond-aside-tagline">
-              More than technical skills — easy to work with, fast to learn,
-              service-oriented.
-            </p>
-
-            <Link
-              className="left-action-btn beyond-left-btn"
-              to="/"
-              state={{ scrollTo: "about" }}
-              onClick={goToCode}
-            >
-              <svg viewBox="0 0 24 24">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-              The Code
-            </Link>
+            {identity}
 
             <nav aria-label="Beyond sections">
               <ul className="sidenav">

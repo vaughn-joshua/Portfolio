@@ -52,13 +52,25 @@ function AboutPage() {
           documentation, largely on my own initiative.
         </p>
         <p style={{ marginBottom: 12 }}>
-          This experience taught me that{" "}
+          Outside of work I keep shipping. I built{" "}
+          <strong>Victor Thrift</strong>, a full-stack resale platform with a
+          custom analytics engine and an immutable sales ledger;{" "}
+          <strong>Hireva</strong>, a job-tracking mobile app I built{" "}
+          <strong>solo from database to deployment</strong> with JWT auth and a
+          URL-scraping engine; and <strong>TravelEase</strong>, my capstone — a
+          PERN travel platform with role-based access and traffic-aware
+          suggestions. Each one pushed me deeper into{" "}
+          <strong>designing data models, securing APIs, and owning real
+          deployments</strong> rather than just writing features.
+        </p>
+        <p style={{ marginBottom: 12 }}>
+          Across all of it I've learned that{" "}
           <strong>speed without understanding is a liability</strong>. I use AI
           tools to move faster, but I make sure I can still explain and maintain
           everything I ship — <strong>code only matters if the next developer
-          can read it</strong>. I also learned to study a system's architecture
-          and existing conventions before writing anything, and to ask questions
-          early instead of guessing.
+          can read it</strong>. I study a system's architecture and existing
+          conventions before writing anything, and I ask questions early instead
+          of guessing.
         </p>
         <p>
           Watching something I coded turn into an app on my own phone — that's

@@ -37,9 +37,11 @@ function About() {
             <p className="about-card-bio">
               <strong>Information Systems student</strong> from TUP–Manila,
               awaiting graduation this August. I build full stack mobile and web
-              apps and most recently owned an entire payroll module end-to-end
-              at EasyCom Japan Philippines Inc. Watching something I coded turn
-              into an app on my own phone — that's the moment that hooked me.
+              apps — owning a module end-to-end at EasyCom Japan Philippines Inc.
+              and shipping projects of my own, from a solo-built job-tracker
+              mobile app to a full-stack store with its own analytics engine.
+              Watching something I coded turn into an app on my own phone —
+              that's the moment that hooked me.
             </p>
             <br />
             <SectionLabel>Technical Skills</SectionLabel>

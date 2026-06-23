@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
     image:
       "https://res.cloudinary.com/dezl3r1u5/image/upload/Screenshot_2026-01-17_024214_q20kcu.jpg",
     liveLink: "https://www.travelease.app/",
-    githubLink: null,
+    githubLink: "https://github.com/Edamuza/Travel_Ease.git",
     tags: [
       "React",
       "Node.js",
@@ -98,8 +98,9 @@ export const PROJECTS: Project[] = [
     title: "Hireva",
     subtitle: "Job Application Tracker Mobile App",
     image: null,
+    videoEmbed: "https://www.youtube.com/embed/NdY5OqpMIVM",
     liveLink: null,
-    githubLink: null,
+    githubLink: "https://github.com/vaughn-joshua/hireva-mobile.git",
     tags: [
       "TypeScript",
       "React Native",
@@ -198,6 +199,122 @@ export const PROJECTS: Project[] = [
         developer was also a challenge — learning how gestures, native modules,
         and mobile UX patterns work took real adjustment coming from a web
         background.
+      </>,
+    ],
+  },
+  {
+    slug: "victor-thrift",
+    title: "Victor Thrift",
+    subtitle: "Full-Stack Thrift Store & Inventory Management Platform",
+    image:
+      "https://res.cloudinary.com/dezl3r1u5/image/upload/605127974_3779694682167520_4505797542925257827_n_tzjde5.jpg",
+    liveLink: null,
+    liveComingSoon: true,
+    githubLink: "https://github.com/vaughn-joshua/Victor_Thrift.git",
+    tags: [
+      "React 19",
+      "TypeScript",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind",
+      "Zustand",
+      "Cloudinary",
+      "JWT",
+    ],
+    desc: "Full-stack resale marketplace pairing a public storefront with a JWT-secured admin dashboard and a custom analytics engine surfacing 11 business reports.",
+    overview: (
+      <>
+        Victor Thrift is a{" "}
+        <strong>full-stack platform for running an online thrift/resale shop</strong>.
+        It pairs a clean <strong>public storefront</strong> — where customers
+        browse products, view image galleries, read reviews, and inquire to buy —
+        with a comprehensive <strong>admin back office</strong> for inventory
+        management and data-driven business insights. The project is structured
+        as a <strong>TypeScript monorepo</strong> with independently deployable
+        frontend and backend.
+      </>
+    ),
+    whatIDid: [
+      <>
+        Built a <strong>custom analytics engine</strong> generating{" "}
+        <strong>11 business reports</strong> — revenue trends, conversion
+        funnels, pricing realization, sell-through by brand/category, aging
+        inventory, and time-to-sell — organized into five tabbed dashboard views.
+      </>,
+      <>
+        Architected an <strong>immutable sales-ledger pattern</strong> — each
+        completed sale writes a permanent <strong>Sale record</strong>{" "}
+        (transactionally with the status change) rather than mutating a
+        "sold price" field, enabling accurate historical revenue and time-to-sell
+        reporting that survives later edits or relisting.
+      </>,
+      <>
+        Built a <strong>zero-backend "Inquire to Buy" flow</strong> — the
+        Clipboard API silently copies structured product details, then an{" "}
+        <strong>m.me link</strong> opens a direct Messenger chat where a Facebook
+        Instant Reply greets the customer, who simply pastes to start the
+        conversation — no bot, no server calls.
+      </>,
+      <>
+        Designed a <strong>normalized PostgreSQL schema</strong> with Prisma
+        modeling products, multi-image galleries, reviews, status workflows
+        (Available → Negotiating → Sold), and the sales ledger.
+      </>,
+      <>
+        Secured admin routes with <strong>cookie-based JWT auth</strong> and
+        implemented <strong>signed direct-to-Cloudinary uploads</strong> so the
+        API secret never reaches the browser.
+      </>,
+      <>
+        Documented the REST API with{" "}
+        <strong>auto-generated Swagger/OpenAPI specs</strong> and kept the stack{" "}
+        <strong>type-safe end to end</strong> across a Prisma-typed backend and a
+        strictly-typed React frontend.
+      </>,
+    ],
+    whatILearned: (
+      <>
+        Victor Thrift pushed me to think about software the way a{" "}
+        <strong>business owner actually does</strong> — not just "can a customer
+        buy this," but "which brands sell, which items sit, and what am I
+        leaving on the table." Building the analytics engine forced me to design
+        the data model with the <strong>reports in mind from the start</strong>.
+        <br />
+        <br />
+        The biggest design lesson was the{" "}
+        <strong>immutable sales ledger</strong>. My first instinct was a simple
+        "sold price" field, but I realized that editing or relisting a product
+        would silently corrupt my historical numbers. Writing a permanent{" "}
+        <strong>Sale record transactionally</strong> taught me that{" "}
+        <strong>how you model data determines what you can trust later</strong>.
+        <br />
+        <br />
+        I also learned that the <strong>simplest solution is often the
+        smartest</strong>. The "Inquire to Buy" flow could have been a chatbot
+        and a backend integration — instead, the Clipboard API plus an m.me link
+        and a Facebook Instant Reply solved the whole thing with{" "}
+        <strong>zero server calls</strong>, and it works on desktop and mobile.
+      </>
+    ),
+    challenges: [
+      <>
+        <strong>Designing reporting that survives edits.</strong> Getting
+        accurate historical revenue, time-to-sell, and sales trends meant the
+        data couldn't live in mutable fields. Moving to a transactional sales
+        ledger was the key insight that made every downstream report reliable.
+      </>,
+      <>
+        <strong>Keeping credentials off the client.</strong> Image uploads had
+        to go directly from the browser to Cloudinary for performance, but
+        without exposing the API secret — solved by minting a short-lived
+        signature server-side so the secret never leaves the backend.
+      </>,
+      <>
+        <strong>Turning raw data into useful signals.</strong> Surfacing things
+        like "sold above asking," aging dead-stock, and "high interest but
+        unsold" required deriving meaningful business metrics from product,
+        view, and sale records rather than just listing rows.
       </>,
     ],
   },

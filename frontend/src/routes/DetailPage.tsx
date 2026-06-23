@@ -1,9 +1,15 @@
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useParams, Link } from "react-router-dom";
 import Overlay from "../components/ui/Overlay";
 import BackButton from "../components/ui/BackButton";
+import Lightbox from "../components/ui/Lightbox";
 import Tag from "../components/ui/Tag";
 import { PROJECTS } from "../data/projects";
 import type { Project } from "../types";
+import intern1 from "../assets/intern1.jpg";
+import intern2 from "../assets/intern2.jpg";
+import intern3 from "../assets/intern3.jpg";
 
 // The internship is a special case reusing this same route (/projects/internship).
 // Ported from reference/index.html (INTERNSHIP). whatIDid is real; the
@@ -13,6 +19,8 @@ const INTERNSHIP: Project = {
   title: "Full Stack Mobile Developer Intern",
   subtitle: "EasyCom Japan Philippines Inc. · Feb 2026 – Jun 2026 · 486 hrs",
   image: null,
+  // intern2 is the main shot; the others follow as thumbnails.
+  images: [intern2, intern1, intern3],
   liveLink: null,
   githubLink: null,
   tags: [
@@ -112,6 +120,25 @@ const INTERNSHIP: Project = {
 
 function DetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  // Index of the image open in the lightbox, or null when closed.
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  // Demo video stays a click-to-play placeholder until activated (also avoids
+  // loading the heavy YouTube embed until the user asks for it).
+  const [videoPlaying, setVideoPlaying] = useState(false);
+
+  // Escape closes the video overlay (capture + stopImmediatePropagation so the
+  // parent Overlay's Escape handler doesn't also navigate the route away).
+  useEffect(() => {
+    if (!videoPlaying) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.stopImmediatePropagation();
+        setVideoPlaying(false);
+      }
+    };
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
+  }, [videoPlaying]);
 
   const isInternship = slug === "internship";
   const idx = PROJECTS.findIndex((p) => p.slug === slug);
@@ -130,16 +157,97 @@ function DetailPage() {
   const prev = !isInternship ? PROJECTS[idx - 1] : null;
   const next = !isInternship ? PROJECTS[idx + 1] : null;
 
+  // Normalize to a single image set so every detail page gets the same
+  // click-to-zoom gallery: a multi-image `images` array wins, otherwise the
+  // single `image` becomes a one-element set.
+  const gallery = data.images?.length
+    ? data.images
+    : data.image
+      ? [data.image]
+      : [];
+
   return (
     <Overlay>
       <BackButton
         label={isInternship ? "Back to experience" : "All projects"}
       />
 
-      {data.image ? (
-        <img className="detail-hero" src={data.image} alt={data.title} />
+      {data.videoEmbed && (
+        <button
+          type="button"
+          className="detail-video-poster"
+          onClick={() => setVideoPlaying(true)}
+          aria-label="Play demo video"
+        >
+          <span className="detail-video-play">
+            <svg viewBox="0 0 24 24">
+              <polygon points="6 4 20 12 6 20 6 4" />
+            </svg>
+          </span>
+          <span className="detail-video-label">Click to see demo</span>
+        </button>
+      )}
+
+      {data.videoEmbed &&
+        videoPlaying &&
+        createPortal(
+          <div
+            className="video-overlay"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => setVideoPlaying(false)}
+          >
+            <button
+              type="button"
+              className="video-overlay-close"
+              aria-label="Close"
+              onClick={() => setVideoPlaying(false)}
+            >
+              <svg viewBox="0 0 24 24">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </svg>
+            </button>
+            <div
+              className="video-overlay-frame"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <iframe
+                src={`${data.videoEmbed}${
+                  data.videoEmbed.includes("?") ? "&" : "?"
+                }autoplay=1`}
+                title={`${data.title} demo`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
+
+      {gallery.length > 0 ? (
+        <button
+          type="button"
+          className="detail-gallery-main"
+          onClick={() => setLightboxIdx(0)}
+          aria-label="View image"
+        >
+          <img src={gallery[0]} alt={`${data.title} — 1`} />
+        </button>
       ) : (
-        <div className="detail-hero-placeholder">No screenshot yet</div>
+        !data.videoEmbed && (
+          <div className="detail-hero-placeholder">No screenshot yet</div>
+        )
+      )}
+
+      {gallery.length > 0 && (
+        <Lightbox
+          images={gallery}
+          index={lightboxIdx}
+          onClose={() => setLightboxIdx(null)}
+          onIndexChange={setLightboxIdx}
+          alt={data.title}
+        />
       )}
 
       <div className="exp-tags" style={{ marginBottom: 10 }}>
@@ -151,9 +259,9 @@ function DetailPage() {
       <h2 className="detail-title">{data.title}</h2>
       <p className="detail-subtitle">{data.subtitle}</p>
 
-      {(data.liveLink || data.githubLink) && (
+      {(data.liveLink || data.liveComingSoon || data.githubLink) && (
         <div className="detail-links">
-          {data.liveLink && (
+          {data.liveLink ? (
             <a
               className="detail-link"
               href={data.liveLink}
@@ -166,6 +274,12 @@ function DetailPage() {
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </a>
+          ) : (
+            data.liveComingSoon && (
+              <span className="detail-link detail-link-soon" aria-disabled="true">
+                Live — Coming Soon
+              </span>
+            )
           )}
           {data.githubLink && (
             <a

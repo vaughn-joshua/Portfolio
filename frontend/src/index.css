@@ -324,6 +324,133 @@ a {
   width: 44px;
   background: var(--heading);
 }
+/* ═══════════════════════════════
+   BURGER NAV (mobile only)
+   Hidden on desktop; the media query below flips it on. Shared by the Home
+   sidebar and the Beyond aside.
+═══════════════════════════════ */
+.burger-nav {
+  display: none;
+}
+.burger-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 120;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+.burger-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--heading);
+  border-radius: 2px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+.burger-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.burger-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 110;
+  touch-action: none;
+}
+.burger-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(82vw, 300px);
+  z-index: 115;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  padding: 72px 28px 32px;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.burger-panel.open {
+  transform: translateX(0);
+}
+/* Header hosts the identity + action buttons moved out of the sticky sidebar. */
+.burger-panel-header {
+  margin-bottom: 20px;
+}
+.burger-panel-header .left-name,
+.burger-panel-header .beyond-name {
+  font-size: 1.5rem;
+}
+.burger-panel-header .left-tagline,
+.burger-panel-header .beyond-aside-tagline {
+  max-width: none;
+}
+.burger-panel-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.burger-panel-links a {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.burger-panel-links a:hover,
+.burger-panel-links a.active {
+  color: var(--heading);
+}
+.burger-panel-footer {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Mobile-only "Beyond the Code" indicator at the top of the content (the aside
+   that normally shows this tag is hidden behind the burger on mobile). It sits
+   in normal flow and scrolls with the page. Flipped on in the media query. */
+.beyond-mobile-banner {
+  display: none;
+  width: fit-content;
+  margin-bottom: 20px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  background: rgba(168, 180, 232, 0.1);
+  border: 1px solid rgba(168, 180, 232, 0.2);
+  border-radius: 4px;
+  padding: 6px 11px;
+}
+
 .socials {
   display: flex;
   gap: 14px;
@@ -358,6 +485,7 @@ a {
   position: absolute;
   bottom: calc(100% + 10px);
   left: 0;
+  z-index: 10;
   background: var(--surface);
   color: var(--heading);
   border: 1px solid var(--border);
@@ -755,14 +883,248 @@ section {
 }
 
 /* detail */
-.detail-hero {
+/* Demo video (optional): a click-to-play poster the same height as the project
+   screenshots. Clicking opens the video full-screen (its own player) rather
+   than inline, and the heavy embed only loads on demand. */
+.detail-video-poster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  height: 200px;
+  padding: 0;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  background:
+    radial-gradient(
+      ellipse 60% 60% at 50% 45%,
+      rgba(168, 180, 232, 0.12) 0%,
+      transparent 70%
+    ),
+    var(--surface);
+  transition: border-color 0.2s;
+}
+.detail-video-poster:hover {
+  border-color: var(--accent2);
+}
+.detail-video-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent2);
+  color: #0e1117;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.detail-video-poster:hover .detail-video-play {
+  transform: scale(1.08);
+  background: var(--accent);
+}
+.detail-video-play svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  margin-left: 3px;
+}
+.detail-video-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Full-screen demo video player (opened from the poster). Mirrors the image
+   Lightbox: dark backdrop, centered 16:9 frame, close button. Fades in like the
+   other overlays. */
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  /* Semi-transparent so the page stays visible behind the player. */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+  animation: videoOverlayIn 0.25s ease;
+}
+.video-overlay-frame {
+  animation: videoFrameIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes videoOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes videoFrameIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.video-overlay-frame {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.video-overlay-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.video-overlay-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.video-overlay-close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.video-overlay-close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* Every project's screenshot(s) render here: a single main image that fills
+   its allotted space and opens the full-screen Lightbox on click (and steps
+   through the set when there's more than one, e.g. the internship). */
+.detail-gallery-main {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.detail-gallery-main:hover {
+  border-color: var(--accent2);
+}
+.detail-gallery-main img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  margin-bottom: 24px;
   display: block;
+}
+
+/* Full-screen image viewer (Lightbox.tsx). Sits above the detail overlay. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 64px;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.lightbox-nav.prev {
+  left: 16px;
+}
+.lightbox-nav.next {
+  right: 16px;
+}
+.lightbox-close svg,
+.lightbox-nav svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.lightbox-counter {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.05em;
 }
 .detail-hero-placeholder {
   width: 100%;
@@ -810,6 +1172,15 @@ section {
 }
 .detail-link:hover {
   border-color: var(--accent2);
+}
+/* Non-clickable "Live — Coming Soon" indicator: muted, no hover affordance. */
+.detail-link-soon {
+  color: var(--muted);
+  cursor: default;
+  border-style: dashed;
+}
+.detail-link-soon:hover {
+  border-color: var(--border);
 }
 .detail-link svg {
   width: 11px;
@@ -1125,15 +1496,21 @@ section {
     padding: 0 20px;
     gap: 0;
   }
+  /* The whole sticky sidebar moves into the burger menu on mobile. Keep the
+     <aside> in the tree (it hosts BurgerNav) but collapse its desktop content. */
   .left {
     position: static;
     height: auto;
     width: 100%;
     min-width: unset;
-    padding: 44px 0 0;
+    padding: 0;
   }
-  .sidenav {
+  .left > div,
+  .left > .socials {
     display: none;
+  }
+  .burger-nav {
+    display: block;
   }
   .right {
     padding: 40px 0 80px;
@@ -1158,6 +1535,12 @@ section {
   .proj-nav {
     grid-template-columns: 1fr;
   }
+  .detail-gallery-main img {
+    height: 200px;
+  }
+  .lightbox {
+    padding: 56px 12px;
+  }
   .overlay-inner {
     padding: 44px 20px 80px;
   }
@@ -1166,23 +1549,26 @@ section {
     padding: 0 20px;
     gap: 0;
   }
+  /* The Beyond aside also moves entirely into the burger menu on mobile. */
   .beyond-aside {
-    position: static;
-    height: auto;
-    width: 100%;
-    min-width: unset;
-    padding: 44px 0 0;
-    order: -1; /* identity panel above the scrolling content on mobile */
+    display: none;
   }
-  .beyond-aside-tagline,
-  .beyond-aside-contact .contact-body {
+  .beyond-mobile-banner {
+    display: block;
+  }
+  .beyond-aside-tagline {
     max-width: none;
   }
-  .beyond-aside-contact {
-    display: none; /* contact repeats; hide the sticky copy on mobile */
-  }
+  /* Top padding clears the fixed burger button so the banner/content start
+     below it. */
   .beyond-main {
-    padding: 32px 0 80px;
+    padding: 64px 0 80px;
+  }
+  /* On failure the toast shows the full email — let it wrap instead of
+     overflowing the narrow viewport. */
+  .copy-toast {
+    white-space: normal;
+    max-width: 80vw;
   }
 }
 @media (prefers-reduced-motion: reduce) {
